@@ -32,8 +32,17 @@ export function CornNav() {
             scrolled ? "bg-card/80 shadow-soft" : "bg-card/40"
           }`}
         >
-          <a href="#top" className="flex items-center gap-2.5 font-display text-xl font-black tracking-tight">
-            <img src={logo} alt="Cornlicious logo" className="h-9 w-9 rounded-full object-cover shadow-soft" width={72} height={72} />
+          <a
+            href="#top"
+            className="flex items-center gap-2.5 font-display text-xl font-black tracking-tight"
+          >
+            <img
+              src={logo}
+              alt="Cornlicious logo"
+              className="h-9 w-9 rounded-full object-cover shadow-soft"
+              width={72}
+              height={72}
+            />
             <span className="text-[var(--leaf-deep)]">Cornlicious</span>
           </a>
           <nav className="hidden items-center gap-1 md:flex">
@@ -66,11 +75,20 @@ export function CornNav() {
         {open && (
           <div className="mt-2 md:hidden rounded-3xl border border-border/60 bg-card/95 p-3 backdrop-blur-xl shadow-pop">
             {links.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block rounded-2xl px-4 py-3 font-medium hover:bg-muted">
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-2xl px-4 py-3 font-medium hover:bg-muted"
+              >
                 {l.label}
               </a>
             ))}
-            <a href="#order" onClick={() => setOpen(false)} className="mt-1 block rounded-2xl bg-primary px-4 py-3 text-center font-semibold text-primary-foreground">
+            <a
+              href="#order"
+              onClick={() => setOpen(false)}
+              className="mt-1 block rounded-2xl bg-primary px-4 py-3 text-center font-semibold text-primary-foreground"
+            >
               Order Now
             </a>
           </div>
