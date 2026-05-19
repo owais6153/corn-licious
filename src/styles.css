@@ -1,0 +1,134 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+  --radius-4xl: calc(var(--radius) + 28px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-corn: var(--corn);
+  --color-corn-deep: var(--corn-deep);
+  --color-leaf: var(--leaf);
+  --color-leaf-deep: var(--leaf-deep);
+  --color-cream: var(--cream);
+  --color-husk: var(--husk);
+
+  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Brand */
+  --corn: oklch(0.85 0.16 88);          /* #F4C233 */
+  --corn-deep: oklch(0.74 0.18 70);
+  --leaf: oklch(0.48 0.12 145);         /* #446F3C */
+  --leaf-deep: oklch(0.36 0.11 145);
+  --cream: oklch(0.985 0.015 90);       /* warm white */
+  --husk: oklch(0.93 0.04 85);
+
+  --background: var(--cream);
+  --foreground: oklch(0.22 0.04 145);
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+
+  --primary: var(--leaf);
+  --primary-foreground: var(--cream);
+
+  --secondary: var(--corn);
+  --secondary-foreground: var(--leaf-deep);
+
+  --muted: var(--husk);
+  --muted-foreground: oklch(0.45 0.04 130);
+
+  --accent: var(--corn);
+  --accent-foreground: var(--leaf-deep);
+
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: var(--cream);
+
+  --border: oklch(0.9 0.03 90);
+  --input: oklch(0.9 0.03 90);
+  --ring: var(--leaf);
+
+  --gradient-sun: linear-gradient(135deg, oklch(0.92 0.12 90) 0%, var(--corn) 60%, var(--corn-deep) 100%);
+  --gradient-leaf: linear-gradient(135deg, var(--leaf) 0%, var(--leaf-deep) 100%);
+  --shadow-pop: 0 30px 60px -20px color-mix(in oklab, var(--leaf-deep) 25%, transparent);
+  --shadow-soft: 0 12px 40px -16px color-mix(in oklab, var(--corn-deep) 35%, transparent);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .bg-grain {
+    background-image: radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--leaf) 8%, transparent) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+  .gradient-sun { background: var(--gradient-sun); }
+  .gradient-leaf { background: var(--gradient-leaf); }
+  .shadow-pop { box-shadow: var(--shadow-pop); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-24px) rotate(8deg); }
+  }
+  .animate-float { animation: float-y 6s ease-in-out infinite; }
+
+  @keyframes spin-slow {
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow { animation: spin-slow 24s linear infinite; }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee { animation: marquee 30s linear infinite; }
+}
